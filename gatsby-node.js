@@ -44,6 +44,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const postPage = path.resolve("src/templates/post.js");
+  const pagePage = path.resolve("src/templates/page.js");
   const tagPage = path.resolve("src/templates/tag.js");
   const categoryPage = path.resolve("src/templates/category.js");
 
@@ -57,10 +58,12 @@ exports.createPages = async ({ graphql, actions }) => {
                 slug
               }
               frontmatter {
+                path
                 title
                 tags
                 categories
                 date
+                layout
               }
             }
           }
@@ -109,14 +112,49 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     }
 
+    const customSlug = edge.node.frontmatter.path === null ? edge.node.fields.slug : edge.node.frontmatter.path;
     const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
     const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
-    const nextEdge = postsEdges[nextID];
-    const prevEdge = postsEdges[prevID];
+    let nextEdge = postsEdges[nextID];
+    let prevEdge = postsEdges[prevID];
+
+    // Find next post type ID
+    if (nextEdge.node.frontmatter.layout === 'page') {
+      for (let i = 0; i < postsEdges.length; i++) {
+        let newIndex = 1 + i;
+        let nextPostID = index + newIndex < postsEdges.length ? index + newIndex : 0;
+        nextEdge = postsEdges[nextPostID];
+        if (nextEdge.node.frontmatter.layout !== 'page') {
+          break;
+        }
+      }
+    }
+
+    // Find prev post type ID
+    if (prevEdge.node.frontmatter.layout === 'page') {
+      for (let i = 0; i < postsEdges.length; i++) {
+        let newIndex = 1 + i;
+        let prevPostID = index - newIndex >= 0 ? index - 1 : postsEdges.length - newIndex;
+        prevEdge = postsEdges[prevPostID];
+        if (prevEdge.node.frontmatter.layout !== 'page') {
+          break;
+        }
+      }
+    }
+
+    if (prevEdge.node.frontmatter.layout === 'page') {
+      prevEdge = postsEdges[index];
+    }
+
+    // Choose the post or the page template
+    let template = postPage
+    if (edge.node.frontmatter.layout === 'page') {
+      template = pagePage
+    }
 
     createPage({
-      path: edge.node.fields.slug,
-      component: postPage,
+      path: customSlug,
+      component: template,
       context: {
         slug: edge.node.fields.slug,
         nexttitle: nextEdge.node.frontmatter.title,
