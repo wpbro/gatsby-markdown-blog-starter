@@ -7,23 +7,13 @@ import styles from './Header.module.scss'
 const Header = () => (
   <header>
     <h1>
-      <Link to="/" activeClassName={styles.activeNav}>
+      <Link to="/">
         {config.siteTitle}
       </Link>
     </h1>
     <nav>
       <ul className={styles.mainNav}>
-        <li>
-          <Link to="/about" activeClassName={styles.activeNav}>
-            About
-          </Link>
-        </li>
         <Categories activeClassName={styles.activeNav} />
-        <li>
-          <Link to="/contact" activeClassName={styles.activeNav}>
-            Contact
-          </Link>
-        </li>
       </ul>
     </nav>
   </header>
