@@ -1,7 +1,5 @@
 
-<div align="center">
-    <img src="static/logos/logo-1024.png" alt="Logo" width='200px' height='200px'/>
-</div>
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a9639e1a-5675-4221-ad44-e06f381db5e6/deploy-status)](https://app.netlify.com/sites/wpbro/deploys)
 
 # Gatsby Markdown Blog Starter
 
