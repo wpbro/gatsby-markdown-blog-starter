@@ -1,7 +1,7 @@
-import React from 'react'
-import _ from 'lodash'
-import { Link } from 'gatsby'
-import styles from './PostTags.module.scss'
+import React from "react";
+import _ from "lodash";
+import { Link } from "gatsby";
+import styles from "./PostTags.module.scss";
 
 const PostTags = ({ tags }) => {
   return (
@@ -13,7 +13,7 @@ const PostTags = ({ tags }) => {
           </Link>
         ))}
     </div>
-  )
-}
+  );
+};
 
-export default PostTags
+export default PostTags;

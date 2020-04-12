@@ -1,4 +1,4 @@
-header {
+.siteHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,17 +44,28 @@ header {
     color: #6E85BC;
   }
 
-  h1 a, h1 a.activeNav {
-    color: #C68853;
-    text-transform: lowercase;
+  .siteLogo {
+    line-height: 1;
+    margin: 0;
+
+    a, a.activeNav {
+      color: #EE9B52;
+      display: block;
+      text-transform: lowercase;
+    }
+
+    img {
+      max-width: 150px;
+      margin: 0;
+    }
   }
 }
 
 .main-nav {
   display: flex;
   list-style: none;
+  margin: 0;
   padding: 0;
-  margin-top: 40px;
   overflow: auto;
   overflow: -moz-scrollbars-none;
   scrollbar-width: none;
@@ -66,6 +77,7 @@ header {
 
   li {
     font-size: 1.3rem;
+    margin-bottom: 0;
 
     &+li {
       margin-left: 1.5rem;
@@ -73,52 +85,34 @@ header {
   }
 }
 
-@media (max-width: 1000px) {
-  header {
-    display: block;
-    height: 120px;
-  }
-
-  nav {
-    margin-top: -35px;
-
-    ul {
-      margin: 0;
-    }
-  }
-}
-
 @media (max-width: 768px) {
-  header {
-    padding: 0 20px;
+  .siteHeader {
+    display: block;
+    height: 100px;
+    text-align: center;
+    padding: 10px 20px;
+
     strong {
       display: none;
     }
 
-    h1 {
-      margin: 0;
-      text-align: center;
-    }
-
-    .h1 {
-      font-size: 1.3rem;
+    .siteLogo {
+      margin-bottom: 5px;
     }
   }
 
   .main-nav {
     li {
       &+li {
-        margin-left: 1rem;
+        margin-left: 0.7rem;
       }
     }
-  }
-}
 
-@media (max-width: 520px) {
-  header nav a {
-    font-size: 0.8rem;
-    border: 1px solid #C68853;
-    padding: 2px 5px;
-    border-radius: 5px;
+    a {
+      font-size: 0.8rem;
+      border: 1px solid #EE9B52;
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
   }
 }

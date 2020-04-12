@@ -1,6 +1,6 @@
-import React from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
-import _ from 'lodash'
+import React from "react";
+import { useStaticQuery, graphql, Link } from "gatsby";
+import _ from "lodash";
 
 const Categories = props => {
   const data = useStaticQuery(graphql`
@@ -12,7 +12,7 @@ const Categories = props => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <>
@@ -29,7 +29,7 @@ const Categories = props => {
         </li>
       ))}
     </>
-  )
-}
+  );
+};
 
-export default Categories
+export default Categories;

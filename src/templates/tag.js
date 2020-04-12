@@ -1,9 +1,9 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
-import Layout from '../layout'
-import PostListing from '../components/PostListing'
-import config from '../../data/SiteConfig'
+import React from "react";
+import Helmet from "react-helmet";
+import { graphql } from "gatsby";
+import Layout from "../layout";
+import PostListing from "../components/PostListing";
+import config from "../../data/SiteConfig";
 
 const TagTemplate = ({ data, pageContext }) => (
   <Layout>
@@ -14,8 +14,8 @@ const TagTemplate = ({ data, pageContext }) => (
       <PostListing postEdges={data.allMarkdownRemark.edges} />
     </main>
   </Layout>
-)
-export default TagTemplate
+);
+export default TagTemplate;
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
@@ -45,4 +45,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

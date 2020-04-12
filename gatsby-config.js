@@ -18,7 +18,6 @@ module.exports = {
     }
   },
   plugins: [
-    
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
     "gatsby-plugin-htaccess",
@@ -46,8 +45,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
+        pathToConfigModule: `src/utils/typography`
+      }
     },
     {
       resolve: "gatsby-transformer-remark",
@@ -97,16 +96,16 @@ module.exports = {
         display: "minimal-ui",
         icons: [
           {
-            src: '/logos/logo-48.png',
-            sizes: '48x48',
-            type: 'image/png',
+            src: "/logos/wpbro-favicon.png",
+            sizes: "48x48",
+            type: "image/png"
           },
           {
-            src: '/logos/logo-1024.png',
-            sizes: '1024x1024',
-            type: 'image/png',
-          },
-        ],
+            src: "/logos/wpbro-favicon@2x.png",
+            sizes: "1024x1024",
+            type: "image/png"
+          }
+        ]
       }
     },
     "gatsby-plugin-offline",
@@ -116,7 +115,7 @@ module.exports = {
         setup(ref) {
           const ret = ref.query.site.siteMetadata.rssMetadata;
           ret.allMarkdownRemark = ref.query.allMarkdownRemark;
-          ret.generator = "GatsbyJS Advanced Starter";
+          ret.generator = "WPBRO - Dima Minka";
           return ret;
         },
         query: `
@@ -187,4 +186,3 @@ module.exports = {
     }
   ]
 };
-
