@@ -5,6 +5,8 @@
 
 # Gatsby Markdown Blog Starter
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f471cf3acc77470f801eb1aa92c048ea)](https://app.codacy.com/gh/wpbro/gatsby-markdown-blog-starter?utm_source=github.com&utm_medium=referral&utm_content=wpbro/gatsby-markdown-blog-starter&utm_campaign=Badge_Grade_Dashboard)
+
 A markdown blog starter with all you need features to start markdown blog.
 NOTE: this porject is a developed version of [Gatsby Advanced Starter](https://github.com/Vagr9K/gatsby-advanced-starter).
 
