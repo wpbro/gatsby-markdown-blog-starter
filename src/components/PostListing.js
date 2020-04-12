@@ -1,10 +1,10 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import styles from './PostsListing.module.scss'
+import React from "react";
+import { Link } from "gatsby";
+import styles from "./PostsListing.module.scss";
 
 const PostListing = ({ postEdges }) => {
   const getPostList = () => {
-    const postList = []
+    const postList = [];
     postEdges.forEach(postEdge => {
       postList.push({
         path: postEdge.node.fields.slug,
@@ -15,12 +15,12 @@ const PostListing = ({ postEdges }) => {
         date: postEdge.node.fields.date,
         excerpt: postEdge.node.excerpt,
         timeToRead: postEdge.node.timeToRead
-      })
-    })
-    return postList
-  }
+      });
+    });
+    return postList;
+  };
 
-  const postList = getPostList()
+  const postList = getPostList();
   return (
     <div className={styles.articleList}>
       {/* Your post list here. */
@@ -30,8 +30,8 @@ const PostListing = ({ postEdges }) => {
             <div className={styles.right}>
               <h3>{post.title}</h3>
               <div className={styles.meta}>
-                {post.date} &mdash; <span>{post.categories.join(' / ')}</span>{' '}
-                &mdash; {post.timeToRead} Min Read{' '}
+                {post.date} &mdash; <span>{post.categories.join(" / ")}</span>{" "}
+                &mdash; {post.timeToRead} Min Read{" "}
               </div>
               <p>{post.excerpt}</p>
             </div>
@@ -39,7 +39,7 @@ const PostListing = ({ postEdges }) => {
         </Link>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default PostListing
+export default PostListing;

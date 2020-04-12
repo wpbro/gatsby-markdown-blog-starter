@@ -1,13 +1,13 @@
-import Typography from "typography"
-import fairyGatesTheme from 'typography-theme-bootstrap'
+import Typography from "typography";
+import fairyGatesTheme from "typography-theme-bootstrap";
 
-const typography = new Typography(fairyGatesTheme)
+const typography = new Typography(fairyGatesTheme);
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {
-  typography.injectStyles()
+  typography.injectStyles();
 }
 
 // Export helper functions
-export const { scale, rhythm, options } = typography
-export default typography
+export const { scale, rhythm, options } = typography;
+export default typography;

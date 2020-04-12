@@ -108,48 +108,53 @@ exports.createPages = async ({ graphql, actions }) => {
 
     if (edge.node.frontmatter.categories) {
       edge.node.frontmatter.categories.forEach(category => {
-        categorySet.add(category)
-      })
+        categorySet.add(category);
+      });
     }
 
-    const customSlug = edge.node.frontmatter.path === null ? edge.node.fields.slug : edge.node.frontmatter.path;
+    const customSlug =
+      edge.node.frontmatter.path === null
+        ? edge.node.fields.slug
+        : edge.node.frontmatter.path;
     const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
     const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
     let nextEdge = postsEdges[nextID];
     let prevEdge = postsEdges[prevID];
 
     // Find next post type ID
-    if (nextEdge.node.frontmatter.layout === 'page') {
+    if (nextEdge.node.frontmatter.layout === "page") {
       for (let i = 0; i < postsEdges.length; i++) {
         let newIndex = 1 + i;
-        let nextPostID = index + newIndex < postsEdges.length ? index + newIndex : 0;
+        let nextPostID =
+          index + newIndex < postsEdges.length ? index + newIndex : 0;
         nextEdge = postsEdges[nextPostID];
-        if (nextEdge.node.frontmatter.layout !== 'page') {
+        if (nextEdge.node.frontmatter.layout !== "page") {
           break;
         }
       }
     }
 
     // Find prev post type ID
-    if (prevEdge.node.frontmatter.layout === 'page') {
+    if (prevEdge.node.frontmatter.layout === "page") {
       for (let i = 0; i < postsEdges.length; i++) {
         let newIndex = 1 + i;
-        let prevPostID = index - newIndex >= 0 ? index - 1 : postsEdges.length - newIndex;
+        let prevPostID =
+          index - newIndex >= 0 ? index - 1 : postsEdges.length - newIndex;
         prevEdge = postsEdges[prevPostID];
-        if (prevEdge.node.frontmatter.layout !== 'page') {
+        if (prevEdge.node.frontmatter.layout !== "page") {
           break;
         }
       }
     }
 
-    if (prevEdge.node.frontmatter.layout === 'page') {
+    if (prevEdge.node.frontmatter.layout === "page") {
       prevEdge = postsEdges[index];
     }
 
     // Choose the post or the page template
-    let template = postPage
-    if (edge.node.frontmatter.layout === 'page') {
-      template = pagePage
+    let template = postPage;
+    if (edge.node.frontmatter.layout === "page") {
+      template = pagePage;
     }
 
     createPage({
@@ -164,7 +169,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     });
   });
- // Generate link foreach tag page
+  // Generate link foreach tag page
   tagSet.forEach(tag => {
     createPage({
       path: `/tags/${_.kebabCase(tag)}/`,

@@ -1,19 +1,19 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import { graphql, Link } from 'gatsby'
-import Layout from '../layout'
-import SEO from '../components/SEO'
-import config from '../../data/SiteConfig'
-import styles from './post.module.scss'
-import './prism-okaidia.css'
+import React from "react";
+import Helmet from "react-helmet";
+import { graphql, Link } from "gatsby";
+import Layout from "../layout";
+import SEO from "../components/SEO";
+import config from "../../data/SiteConfig";
+import styles from "./post.module.scss";
+import "./prism-okaidia.css";
 
 export default ({ data, pageContext }) => {
-  const { slug } = pageContext
-  const postNode = data.markdownRemark
-  const post = postNode.frontmatter
-  const date = postNode.fields.date
+  const { slug } = pageContext;
+  const postNode = data.markdownRemark;
+  const post = postNode.frontmatter;
+  const date = postNode.fields.date;
   if (!post.id) {
-    post.id = slug
+    post.id = slug;
   }
   return (
     <Layout>
@@ -28,8 +28,8 @@ export default ({ data, pageContext }) => {
         </div>
       </main>
     </Layout>
-  )
-}
+  );
+};
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
@@ -47,4 +47,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
