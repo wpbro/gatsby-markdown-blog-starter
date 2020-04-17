@@ -1,7 +1,7 @@
 ---
 date: 2020-04-11
-title: "Upcloud, Runcloud and Elementor Optimization"
-cover: "https://unsplash.it/1152/300/?random?development"
+title: "WPBRO стрим Upcloud, Runcloud, Elementor optimization via WPI - Часть 1"
+cover: "https://i.ytimg.com/vi/kY25tZfbd7I/sddefault.jpg"
 categories: 
     - Devops
     - Elementor
@@ -10,7 +10,10 @@ tags:
     - vps
     - speed
     - wordpress
+    - elementor
     - wpi
 ---
 
-## Showcast from Zoom
+## Описание
+Создания сервера с Runcloud на борту на основе Upcloud VPS/VDS.
+В первой части установка и настройка сервера, краткий обзор Cloudflare, подключение Atomic Autodeploy к Github repository.
