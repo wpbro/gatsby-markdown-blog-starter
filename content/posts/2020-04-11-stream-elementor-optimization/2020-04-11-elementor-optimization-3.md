@@ -1,21 +1,25 @@
 ---
-date: 2020-04-11
+date: 2020-04-07
 path: elementor-optimization-part-3
 title: "WPBRO стрим Upcloud, Runcloud, Elementor optimization via WPI - Часть 3"
 cover: "images/default-cover.jpg"
 categories: 
-    - Devops
     - Elementor
+    - Optimization
 tags:
-    - runcloud
-    - vps
-    - speed
-    - wordpress
+    - cloudflare
     - elementor
-    - wpi
+    - nginx
+    - runcloud
+    - speed
+    - stream
+    - vps
+    - wordpress
+    - wp-rocket
 ---
 
 ## Описание
 Оптимизация сайта с помощью WP Rocket, CDN через CloudFlare, подключение Rocket Nginx и базовые замеры скорости
-
-[![WPBRO стрим Upcloud, Runcloud, Elementor optimization via WPI - Часть 2](https://img.youtube.com/vi/kY25tZfbd7I/0.jpg)](https://youtu.be/s9rW_2Yyrd4 "WPBRO стрим Upcloud, Runcloud, Elementor optimization via WPI - Часть 3")
+`txt
+youtube: s9rW_2Yyrd4 
+`

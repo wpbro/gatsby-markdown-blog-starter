@@ -1,5 +1,5 @@
 ---
-date: 2020-04-11
+date: 2020-04-09
 path: elementor-optimization-part-2
 title: "WPBRO стрим Upcloud, Runcloud, Elementor optimization via WPI - Часть 2"
 cover: "images/default-cover.jpg"
@@ -8,11 +8,12 @@ categories:
     - Elementor
     - WPI
 tags:
-    - runcloud
-    - vps
-    - speed
-    - wordpress
     - elementor
+    - runcloud
+    - speed
+    - stream
+    - vps
+    - wordpress
     - wpi
 ---
 
