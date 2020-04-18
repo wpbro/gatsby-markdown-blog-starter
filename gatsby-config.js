@@ -21,8 +21,6 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
     "gatsby-plugin-htaccess",
-    "gatsby-remark-embed-youtube",
-    "gatsby-remark-responsive-iframe",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -55,31 +53,37 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: "gatsby-remark-embed-video",
+            options: {
+              width: 800,
+              ratio: 1.77,
+              height: 400,
+              related: false,
+              noIframeBorder: true,
+              urlOverrides: [
+                {
+                  id: "youtube",
+                  embedURL: videoId =>
+                    `https://www.youtube-nocookie.com/embed/${videoId}`
+                }
+              ]
+            }
+          },
+          {
             resolve: "gatsby-remark-images",
             options: {
               maxWidth: 690
             }
           },
           {
-            resolve: "gatsby-remark-responsive-iframe"
+            resolve: "gatsby-remark-responsive-iframe",
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`
+            }
           },
           "gatsby-remark-prismjs",
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-autolink-headers"
-        ]
-      }
-    },
-    {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [
-          {
-            resolve: "gatsby-remark-embed-youtube",
-            options: {
-              width: 760,
-              height: 428
-            }
-          }
         ]
       }
     },

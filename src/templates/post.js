@@ -9,7 +9,6 @@ import SEO from "../components/SEO";
 import config from "../../data/SiteConfig";
 import styles from "./post.module.scss";
 import "./prism-okaidia.css";
-import Video from "../components/Video";
 
 export default ({ data, pageContext }) => {
   const { slug, nexttitle, nextslug, prevtitle, prevslug } = pageContext;
@@ -35,7 +34,6 @@ export default ({ data, pageContext }) => {
             <PostTags tags={post.tags} />
           </div>
           <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
-          <Video videoSrcURL={post.youtube_id} videoTitle={post.title} />
           <hr />
           <Bio config={config} />
           <div className={styles.postMeta}>
@@ -72,7 +70,6 @@ export const pageQuery = graphql`
         title
         cover
         date
-        youtube_id
         categories
         tags
       }

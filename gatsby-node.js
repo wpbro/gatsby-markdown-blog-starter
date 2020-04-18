@@ -65,7 +65,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 categories
                 date
                 layout
-                youtube_id
               }
             }
           }
