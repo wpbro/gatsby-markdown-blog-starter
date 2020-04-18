@@ -13,7 +13,7 @@ module.exports = {
       image_url: `${urljoin(
         config.siteUrl,
         config.pathPrefix
-      )}/logos/logo-48.png`,
+      )}/logos/wpbro-favicon.png`,
       copyright: config.copyright
     }
   },
