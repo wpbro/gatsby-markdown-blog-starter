@@ -17,22 +17,44 @@
         cursor: pointer;
     }
 
-    .post-block {
-        padding: 15px;
-        color: #3c4856;
-        margin-top: -20px;
-    }
-
-    .post-title {
-        color: #EE9B52;
-        font-size: 1.2rem;
-        transition: color 0.2s ease;
-    }
-
     .meta {
         color: #EFA8F0;
         margin-top: -15px;
         margin-bottom: 20px;
         font-size: 0.8rem;
+    }
+}
+
+.post-block {
+    padding: 15px;
+    color: #3c4856;
+    margin-top: -20px;
+}
+
+.post-title {
+    color: #EE9B52;
+    font-size: 1.2rem;
+    transition: color 0.2s ease;
+}
+
+@media (max-width: 768px) {
+    .article-box {
+        margin-bottom: 0;
+
+        .meta {
+            font-size: 0.6rem;
+            margin-bottom: 10px;
+        }
+    }
+
+    .post-title {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .post-block {
+        p {
+            font-size: 0.8rem;
+        }
     }
 }
