@@ -27,7 +27,6 @@ export default ({ data, pageContext }) => {
         </Helmet>
         <SEO postPath={customPath} postNode={postNode} postSEO />
         <div>
-          {customPath}
           <h1 className={styles.postTitle}>{post.title}</h1>
           <p className={styles.postMeta}>
             {date} &mdash; {postNode.timeToRead} Min Read{" "}
@@ -46,12 +45,12 @@ export default ({ data, pageContext }) => {
           <ul className={styles.pagination}>
             <li>
               <Link to={prevslug} rel="prev">
-                ← {prevtitle}
+                ← <span>{prevtitle}</span>
               </Link>
             </li>
             <li>
               <Link to={nextslug} rel="next">
-                {nexttitle}→
+                <span>{nexttitle}</span> →
               </Link>
             </li>
           </ul>

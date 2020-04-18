@@ -16,4 +16,16 @@
     list-style: none;
     padding: 0;
     margin-top: 4rem;
+
+    a {
+        text-decoration: none;
+    }
+
+    span {
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 280px;
+        white-space: nowrap;
+    }
 }
