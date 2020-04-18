@@ -17,7 +17,7 @@ tags:
     - wpi
 ---
 
-## Описание
+## Знакомство с WPI.
 Настройка WPI приложения в файлах yaml,  autodeploy с помощью atomic в Runcloud, проверка установки, 
 базовые настройки Elementor.
 `txt

@@ -18,7 +18,7 @@ tags:
     - wpi
 ---
 
-## Описание
+## Серверная часть.
 Создания сервера с Runcloud на борту на основе Upcloud VPS/VDS.
 В первой части установка и настройка сервера, краткий обзор Cloudflare, 
 подключение Atomic Autodeploy к Github repository.

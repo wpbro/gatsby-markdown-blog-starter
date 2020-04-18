@@ -19,7 +19,7 @@ tags:
     - wpi
 ---
 
-## Описание
+## Завершающая часть стрима.
 Подводим итог проделанной работу, знакомство с Small Desktop Elementor, установка плагинов через WPI, 
 сравнение скорости Runcloud Atomic Deploy, знакомство с CloudFlare DDOS Protection.
 `txt

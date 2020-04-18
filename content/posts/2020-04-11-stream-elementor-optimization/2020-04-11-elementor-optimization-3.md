@@ -18,7 +18,7 @@ tags:
     - wp-rocket
 ---
 
-## Описание
+## Проверяем скорость.
 Оптимизация сайта с помощью WP Rocket, CDN через CloudFlare, подключение Rocket Nginx и базовые замеры скорости
 `txt
 youtube: s9rW_2Yyrd4 
