@@ -1,4 +1,3 @@
-
 # WPBRO website - Gatsby Markdown Blog Starter
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a9639e1a-5675-4221-ad44-e06f381db5e6/deploy-status)](https://app.netlify.com/sites/wpbro/deploys)
