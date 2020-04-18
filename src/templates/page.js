@@ -1,17 +1,15 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../layout";
 import SEO from "../components/SEO";
 import config from "../../data/SiteConfig";
-import styles from "./post.module.scss";
 import "./prism-okaidia.css";
 
 export default ({ data, pageContext }) => {
   const { slug } = pageContext;
-  const postNode = data.markdownRemark;
-  const post = postNode.frontmatter;
-  const date = postNode.fields.date;
+  const pageNode = data.markdownRemark;
+  const post = pageNode.frontmatter;
   if (!post.id) {
     post.id = slug;
   }
@@ -21,10 +19,10 @@ export default ({ data, pageContext }) => {
         <Helmet>
           <title>{`${post.title} | ${config.siteTitle}`}</title>
         </Helmet>
-        <SEO postPath={slug} postNode={postNode} postSEO />
+        <SEO postPath={slug} postNode={pageNode} postSEO />
         <div>
           <h1>{post.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+          <div dangerouslySetInnerHTML={{ __html: pageNode.html }} />
         </div>
       </main>
     </Layout>
@@ -39,11 +37,9 @@ export const pageQuery = graphql`
       frontmatter {
         title
         cover
-        date
       }
       fields {
         slug
-        date(formatString: "MMMM DD, YYYY")
       }
     }
   }

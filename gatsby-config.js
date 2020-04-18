@@ -21,6 +21,8 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
     "gatsby-plugin-htaccess",
+    "gatsby-remark-embed-youtube",
+    "gatsby-remark-responsive-iframe",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -64,6 +66,20 @@ module.exports = {
           "gatsby-remark-prismjs",
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-autolink-headers"
+        ]
+      }
+    },
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [
+          {
+            resolve: "gatsby-remark-embed-youtube",
+            options: {
+              width: 760,
+              height: 428
+            }
+          }
         ]
       }
     },
