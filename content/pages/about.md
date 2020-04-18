@@ -9,7 +9,7 @@ cover: "images/default-cover.jpg"
 This is my special project for WordPress community based on Gatsby and Markdown
 
 ## About the idea
------------------
+---
 [WPBRO](http://git.wpbro.ru) fast and SEO optimized website for sharing with my friends and 
 different community members the experience, experimental tasks, showcases and more...
 
