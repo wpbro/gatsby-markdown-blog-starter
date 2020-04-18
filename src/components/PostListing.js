@@ -7,7 +7,7 @@ const PostListing = ({ postEdges }) => {
     const postList = [];
     postEdges.forEach(postEdge => {
       postList.push({
-        path: postEdge.node.fields.slug,
+        path: postEdge.node.frontmatter.path || postEdge.node.fields.slug,
         tags: postEdge.node.frontmatter.tags,
         categories: postEdge.node.frontmatter.categories,
         cover: postEdge.node.frontmatter.cover,

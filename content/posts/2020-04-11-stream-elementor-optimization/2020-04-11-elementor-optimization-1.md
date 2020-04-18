@@ -1,6 +1,6 @@
 ---
 date: 2020-04-10
-path: elementor-optimization-part-1
+path: "elementor-optimization-part-1"
 title: "WPBRO стрим Upcloud, Runcloud, Elementor optimization via WPI - Часть 1"
 cover: "images/default-cover.jpg"
 categories: 

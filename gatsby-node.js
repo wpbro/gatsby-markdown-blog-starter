@@ -59,12 +59,12 @@ exports.createPages = async ({ graphql, actions }) => {
                 slug
               }
               frontmatter {
-                path
-                title
-                tags
                 categories
                 date
                 layout
+                path
+                title
+                tags
               }
             }
           }
@@ -132,9 +132,9 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         slug: post.node.fields.slug,
         nexttitle: nextPost.node.frontmatter.title,
-        nextslug: nextPost.node.fields.slug,
+        nextslug: nextPost.node.frontmatter.path || nextPost.node.fields.slug,
         prevtitle: prevPost.node.frontmatter.title,
-        prevslug: prevPost.node.fields.slug
+        prevslug: nextPost.node.frontmatter.path || prevPost.node.fields.slug
       }
     });
   });
