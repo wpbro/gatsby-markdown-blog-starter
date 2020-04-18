@@ -4,15 +4,12 @@ import {
   LinkedinShareButton,
   TwitterShareButton,
   TelegramShareButton,
-  RedditShareButton,
   FacebookShareCount,
   LinkedinShareCount,
-  RedditShareCount,
   FacebookIcon,
   TwitterIcon,
   TelegramIcon,
-  LinkedinIcon,
-  RedditIcon
+  LinkedinIcon
 } from "react-share";
 import urljoin from "url-join";
 import config from "../../data/SiteConfig";
@@ -29,12 +26,6 @@ const SocialLinks = ({ postNode, postPath, mobile }) => {
 
   return (
     <div className={styles.socialLinks}>
-      <RedditShareButton url={url} title={post.title}>
-        <RedditIcon round size={iconSize} />
-        <RedditShareCount url={url}>
-          {count => renderShareCount(count)}
-        </RedditShareCount>
-      </RedditShareButton>
       <TwitterShareButton url={url} title={post.title}>
         <TwitterIcon round size={iconSize} />
       </TwitterShareButton>

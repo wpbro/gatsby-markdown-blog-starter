@@ -15,6 +15,7 @@ export default ({ data, pageContext }) => {
   const postNode = data.markdownRemark;
   const post = postNode.frontmatter;
   const date = postNode.fields.date;
+  const customPath = post.path ? `/${post.path}` : slug;
   if (!post.id) {
     post.id = slug;
   }
@@ -24,9 +25,9 @@ export default ({ data, pageContext }) => {
         <Helmet>
           <title>{`${post.title} | ${config.siteTitle}`}</title>
         </Helmet>
-        <SEO postPath={slug} postNode={postNode} postSEO />
+        <SEO postPath={customPath} postNode={postNode} postSEO />
         <div>
-          <h1>{post.title}</h1>
+          <h1 className={styles.postTitle}>{post.title}</h1>
           <p className={styles.postMeta}>
             {date} &mdash; {postNode.timeToRead} Min Read{" "}
           </p>
@@ -34,23 +35,22 @@ export default ({ data, pageContext }) => {
             <PostTags tags={post.tags} />
           </div>
           <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
-
           <hr />
           <Bio config={config} />
           <div className={styles.postMeta}>
-            <SocialLinks postPath={slug} postNode={postNode} />
+            <SocialLinks postPath={customPath} postNode={postNode} />
           </div>
         </div>
         <nav>
           <ul className={styles.pagination}>
             <li>
               <Link to={prevslug} rel="prev">
-                ← {prevtitle}
+                ← <span>{prevtitle}</span>
               </Link>
             </li>
             <li>
               <Link to={nextslug} rel="next">
-                {nexttitle}→
+                <span>{nexttitle}</span> →
               </Link>
             </li>
           </ul>
@@ -68,11 +68,12 @@ export const pageQuery = graphql`
       timeToRead
       excerpt
       frontmatter {
-        title
+        categories
         cover
         date
-        categories
+        path
         tags
+        title
       }
       fields {
         slug

@@ -27,6 +27,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         slug = `/${_.kebabCase(node.frontmatter.slug)}`;
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, "date")) {
         const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
+        /* eslint no-console: "off" */
         if (!date.isValid)
           console.warn(`WARNING: Invalid date.`, node.frontmatter);
 
@@ -58,12 +59,12 @@ exports.createPages = async ({ graphql, actions }) => {
                 slug
               }
               frontmatter {
-                path
-                title
-                tags
                 categories
                 date
                 layout
+                path
+                title
+                tags
               }
             }
           }
@@ -73,6 +74,7 @@ exports.createPages = async ({ graphql, actions }) => {
   );
 
   if (markdownQueryResult.errors) {
+    /* eslint no-console: "off" */
     console.error(markdownQueryResult.errors);
     throw markdownQueryResult.errors;
   }
@@ -99,73 +101,50 @@ exports.createPages = async ({ graphql, actions }) => {
     return 0;
   });
 
-  postsEdges.forEach((edge, index) => {
-    if (edge.node.frontmatter.tags) {
-      edge.node.frontmatter.tags.forEach(tag => {
+  // Get only posts
+  const posts = postsEdges.filter(
+    post => post.node.frontmatter.layout !== "page"
+  );
+  // Get only pages
+  const pages = postsEdges.filter(
+    page => page.node.frontmatter.layout === "page"
+  );
+  // Create posts
+  posts.forEach((post, newIndex) => {
+    const prevPost = posts[newIndex - 1 >= 0 ? newIndex - 1 : posts.length - 1];
+    const nextPost = posts[newIndex + 1 < posts.length ? newIndex + 1 : 0];
+
+    if (post.node.frontmatter.tags) {
+      post.node.frontmatter.tags.forEach(tag => {
         tagSet.add(tag);
       });
     }
 
-    if (edge.node.frontmatter.categories) {
-      edge.node.frontmatter.categories.forEach(category => {
+    if (post.node.frontmatter.categories) {
+      post.node.frontmatter.categories.forEach(category => {
         categorySet.add(category);
       });
     }
 
-    const customSlug =
-      edge.node.frontmatter.path === null
-        ? edge.node.fields.slug
-        : edge.node.frontmatter.path;
-    const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
-    const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
-    let nextEdge = postsEdges[nextID];
-    let prevEdge = postsEdges[prevID];
-
-    // Find next post type ID
-    if (nextEdge.node.frontmatter.layout === "page") {
-      for (let i = 0; i < postsEdges.length; i++) {
-        let newIndex = 1 + i;
-        let nextPostID =
-          index + newIndex < postsEdges.length ? index + newIndex : 0;
-        nextEdge = postsEdges[nextPostID];
-        if (nextEdge.node.frontmatter.layout !== "page") {
-          break;
-        }
-      }
-    }
-
-    // Find prev post type ID
-    if (prevEdge.node.frontmatter.layout === "page") {
-      for (let i = 0; i < postsEdges.length; i++) {
-        let newIndex = 1 + i;
-        let prevPostID =
-          index - newIndex >= 0 ? index - 1 : postsEdges.length - newIndex;
-        prevEdge = postsEdges[prevPostID];
-        if (prevEdge.node.frontmatter.layout !== "page") {
-          break;
-        }
-      }
-    }
-
-    if (prevEdge.node.frontmatter.layout === "page") {
-      prevEdge = postsEdges[index];
-    }
-
-    // Choose the post or the page template
-    let template = postPage;
-    if (edge.node.frontmatter.layout === "page") {
-      template = pagePage;
-    }
-
     createPage({
-      path: customSlug,
-      component: template,
+      path: post.node.frontmatter.path || post.node.fields.slug,
+      component: postPage,
       context: {
-        slug: edge.node.fields.slug,
-        nexttitle: nextEdge.node.frontmatter.title,
-        nextslug: nextEdge.node.fields.slug,
-        prevtitle: prevEdge.node.frontmatter.title,
-        prevslug: prevEdge.node.fields.slug
+        slug: post.node.fields.slug,
+        nexttitle: nextPost.node.frontmatter.title,
+        nextslug: nextPost.node.frontmatter.path || nextPost.node.fields.slug,
+        prevtitle: prevPost.node.frontmatter.title,
+        prevslug: nextPost.node.frontmatter.path || prevPost.node.fields.slug
+      }
+    });
+  });
+  // Create pages
+  pages.forEach(page => {
+    createPage({
+      path: page.node.frontmatter.path || page.node.fields.slug,
+      component: pagePage,
+      context: {
+        slug: page.node.fields.slug
       }
     });
   });

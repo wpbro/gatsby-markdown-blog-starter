@@ -7,7 +7,7 @@ const PostListing = ({ postEdges }) => {
     const postList = [];
     postEdges.forEach(postEdge => {
       postList.push({
-        path: postEdge.node.fields.slug,
+        path: postEdge.node.frontmatter.path || postEdge.node.fields.slug,
         tags: postEdge.node.frontmatter.tags,
         categories: postEdge.node.frontmatter.categories,
         cover: postEdge.node.frontmatter.cover,
@@ -27,8 +27,8 @@ const PostListing = ({ postEdges }) => {
       postList.map(post => (
         <Link to={post.path} key={post.title}>
           <article className={styles.articleBox}>
-            <div className={styles.right}>
-              <h3>{post.title}</h3>
+            <div className={styles.postBlock}>
+              <h3 className={styles.postTitle}>{post.title}</h3>
               <div className={styles.meta}>
                 {post.date} &mdash; <span>{post.categories.join(" / ")}</span>{" "}
                 &mdash; {post.timeToRead} Min Read{" "}

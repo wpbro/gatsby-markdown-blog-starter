@@ -35,11 +35,12 @@ export const pageQuery = graphql`
           excerpt
           timeToRead
           frontmatter {
-            title
-            tags
+            categories
             cover
             date
-            categories
+            path
+            tags
+            title
           }
         }
       }
