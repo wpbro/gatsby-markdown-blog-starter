@@ -15,6 +15,7 @@ export default ({ data, pageContext }) => {
   const postNode = data.markdownRemark;
   const post = postNode.frontmatter;
   const date = postNode.fields.date;
+  const customPath = post.path ? `/${post.path}` : slug;
   if (!post.id) {
     post.id = slug;
   }
@@ -24,8 +25,9 @@ export default ({ data, pageContext }) => {
         <Helmet>
           <title>{`${post.title} | ${config.siteTitle}`}</title>
         </Helmet>
-        <SEO postPath={slug} postNode={postNode} postSEO />
+        <SEO postPath={customPath} postNode={postNode} postSEO />
         <div>
+          {customPath}
           <h1 className={styles.postTitle}>{post.title}</h1>
           <p className={styles.postMeta}>
             {date} &mdash; {postNode.timeToRead} Min Read{" "}
@@ -37,7 +39,7 @@ export default ({ data, pageContext }) => {
           <hr />
           <Bio config={config} />
           <div className={styles.postMeta}>
-            <SocialLinks postPath={slug} postNode={postNode} />
+            <SocialLinks postPath={customPath} postNode={postNode} />
           </div>
         </div>
         <nav>
@@ -67,11 +69,12 @@ export const pageQuery = graphql`
       timeToRead
       excerpt
       frontmatter {
-        title
+        categories
         cover
         date
-        categories
+        path
         tags
+        title
       }
       fields {
         slug
