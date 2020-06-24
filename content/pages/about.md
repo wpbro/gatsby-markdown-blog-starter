@@ -22,6 +22,7 @@ My WordPress projects run on UpCloud/DigitalOcean cloud's VPS and managed via Ru
 If you have some issues feel free to contact me or my friends from great WordPress community.
 
 ### Find Dima Minka or Modern WordPress developers in telegram
+Test Message
 WPBRO telegram: [@wpbro](https://t.me/wpbro)  
 Dima Minka telegram: [@dimaminka](https://t.me/dimaminka)  
 Russian WordPress community: [@c_wordpress](https://t.me/c_wordpress)  
